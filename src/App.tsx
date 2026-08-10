@@ -6,15 +6,15 @@ import "./App.css";
 type Page = "users" | "expenses";
 
 function App() {
-  const [currentPage, setCurrentPage] =
-    useState<Page>("users");
+  const [currentPage, setCurrentPage] = useState<Page>("users");
 
   return (
-    <div className="app">
+    <div>
+      {/* Navbar */}
       <nav className="navbar">
         <div className="logo">
           <span>UE</span>
-          <h2>Users Expenses Dashboard</h2>
+          <h2>Users & Expenses</h2>
         </div>
 
         <div className="nav-links">
@@ -35,19 +35,16 @@ function App() {
                 ? "nav-btn active"
                 : "nav-btn"
             }
-            onClick={() =>
-              setCurrentPage("expenses")
-            }
+            onClick={() => setCurrentPage("expenses")}
           >
             💰 Expenses
           </button>
         </div>
       </nav>
 
+      {/* Page Content */}
       <main>
-        {currentPage === "users" && <Users search={""} onSearchChange={function (_value: string): void {
-          throw new Error("Function not implemented.");
-        } } />}
+        {currentPage === "users" && <Users />}
 
         {currentPage === "expenses" && <Expenses />}
       </main>
